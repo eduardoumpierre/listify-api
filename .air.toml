@@ -1,0 +1,16 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+cmd = "go build -o ./tmp/main ."
+bin = "tmp/main"
+log_level = "debug"
+log_file = "tmp/air.log"
+include_ext = ["go"]
+exclude_dir = ["tmp"]
+poll=true
+poll_interval=500
+delay = 0
+
+[log]
+time = true
