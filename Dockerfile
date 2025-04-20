@@ -17,4 +17,4 @@ RUN go mod download
 COPY . .
 
 # Use Air to run the app with live reload
-CMD ["air"]
+CMD ["air", "-c", ".air.toml"]

@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"listify-api/internal/config"
 	"listify-api/internal/handlers"
 	"listify-api/internal/repositories"
 	"listify-api/internal/services"
@@ -9,14 +10,14 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func SetupRouter() http.Handler {
+func SetupRouter(config *config.Config) http.Handler {
 	r := chi.NewRouter()
 
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Hello from Go + Air + Docker test!"))
 	})
 
-	userRepo := repositories.NewUserRepository()
+	userRepo := repositories.NewUserRepository(config.DB)
 	userService := services.NewUserService(userRepo)
 	userHandler := handlers.NewUserHandler(userService)
 
