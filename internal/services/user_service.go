@@ -7,13 +7,13 @@ import (
 )
 
 type UserService struct {
-	repo *repositories.UserRepository
+	repo repositories.UserRepositoryInterface
 }
 
-func NewUserService(repo *repositories.UserRepository) *UserService {
+func NewUserService(repo repositories.UserRepositoryInterface) *UserService {
 	return &UserService{repo: repo}
 }
 
-func (s *UserService) FindAll(ctx context.Context) ([]models.User, error) {
+func (s *UserService) FindAll(ctx context.Context) ([]*models.User, error) {
 	return s.repo.FindAll(ctx)
 }
