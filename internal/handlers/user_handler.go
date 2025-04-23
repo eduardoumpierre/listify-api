@@ -34,11 +34,11 @@ func (h *UserHandler) ListUsers(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if users == nil {
-		users = []models.User{}
+		users = []*models.User{}
 	}
 
 	response := struct {
-		Users []models.User `json:"users"`
+		Users []*models.User `json:"users"`
 	}{
 		Users: users,
 	}
